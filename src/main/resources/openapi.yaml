@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /addstudent:
+    post:
+      tags:
+      - student-contoller
+      operationId: addStudent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Response'
+  /addcollege:
+    post:
+      tags:
+      - college-controller
+      operationId: addCollege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollegeDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Response'
+  /getallcolleges:
+    get:
+      tags:
+      - college-controller
+      operationId: getAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CollegeDto'
+  /getallStudents:
+    get:
+      tags:
+      - student-contoller
+      operationId: getAll_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentDto'
+components:
+  schemas:
+    College:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        studentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Student'
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailId:
+          type: string
+        mobileNumber:
+          type: string
+        address:
+          type: string
+        birthDate:
+          type: string
+          format: date-time
+        college:
+          $ref: '#/components/schemas/College'
+    StudentDto:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        status:
+          type: boolean
+        studentId:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailId:
+          type: string
+        mobileNumber:
+          type: string
+        address:
+          type: string
+        birthDate:
+          type: string
+        college:
+          $ref: '#/components/schemas/College'
+    Response:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        status:
+          type: boolean
+    CollegeDto:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        status:
+          type: boolean
+        collegeId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        studentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Student'
