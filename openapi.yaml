@@ -3,13 +3,13 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-- url: http://localhost:8080
-  description: Generated server url
+  - url: http://localhost:8080
+    description: Generated server url
 paths:
   /addstudent:
     post:
       tags:
-      - student-contoller
+        - student-contoller
       operationId: addStudent
       requestBody:
         content:
@@ -27,7 +27,7 @@ paths:
   /addcollege:
     post:
       tags:
-      - college-controller
+        - college-controller
       operationId: addCollege
       requestBody:
         content:
@@ -45,7 +45,7 @@ paths:
   /getallcolleges:
     get:
       tags:
-      - college-controller
+        - college-controller
       operationId: getAll
       responses:
         "200":
@@ -59,7 +59,7 @@ paths:
   /getallStudents:
     get:
       tags:
-      - student-contoller
+        - student-contoller
       operationId: getAll_1
       responses:
         "200":
@@ -72,41 +72,6 @@ paths:
                   $ref: '#/components/schemas/StudentDto'
 components:
   schemas:
-    College:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        address:
-          type: string
-        studentList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Student'
-    Student:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        firstName:
-          type: string
-        lastName:
-          type: string
-        emailId:
-          type: string
-        mobileNumber:
-          type: string
-        address:
-          type: string
-        birthDate:
-          type: string
-          format: date-time
-        college:
-          $ref: '#/components/schemas/College'
     StudentDto:
       type: object
       properties:
@@ -132,8 +97,6 @@ components:
           type: string
         birthDate:
           type: string
-        college:
-          $ref: '#/components/schemas/College'
     Response:
       type: object
       properties:
@@ -161,7 +124,3 @@ components:
           type: string
         address:
           type: string
-        studentList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Student'

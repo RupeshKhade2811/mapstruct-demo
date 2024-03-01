@@ -11,6 +11,6 @@ public class CollegeDto extends Response{
     private UUID collegeId;
     private String name;
     private String address;
-    private List<Student> studentList;
+
 
 }

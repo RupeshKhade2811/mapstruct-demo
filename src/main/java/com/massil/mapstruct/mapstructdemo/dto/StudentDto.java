@@ -17,5 +17,4 @@ public class StudentDto extends Response{
     private String mobileNumber;
     private String address;
     private String birthDate;
-    private College college;
 }
